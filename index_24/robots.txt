@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin2/
+
+Sitemap: https://frontlinehardware.netlify.app/sitemap.xml

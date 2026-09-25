@@ -1,0 +1,33 @@
+{
+  "supabase": {
+    "url": "https://bgnykjzxnknyvefytnjj.supabase.co",
+    "anonKey": "sb_publishable_VSzgwX0q4NsjFezuua_dCQ_Br1bE9EE"
+  },
+  "features": {
+    "loadLiveDeals": true,
+    "loadLiveProducts": true
+  },
+  "content": {
+    "heroBackgroundImage": "gallery-images/Fluted wall panel and marble sheet.jfif",
+    "easySellSection": {
+      "eyebrow": "Top Products",
+      "title": "Favourite-selling Products",
+      "description": "Hand-picked items that sell fast at the counter — good margins, reliable stock and easy to explain to customers. Tap any item to view details or message us on WhatsApp for bulk pricing."
+    },
+    "projectGallery": [
+      {
+        "title": "Project A",
+        "imageUrl": ""
+      },
+      {
+        "title": "Project B",
+        "imageUrl": ""
+      }
+    ],
+    "googleReviews": {
+      "_howTo": "1) Find your Place ID: https://developers.google.com/maps/documentation/places/web-service/place-id (search your exact business name/address). 2) In Google Cloud Console, enable 'Places API (New)', create an API key, and restrict it by HTTP referrer to your website domain(s). 3) Paste both values below, replacing the placeholders. Leave as-is to keep using the manual reviews below instead.",
+      "placeId": "YOUR_GOOGLE_PLACE_ID",
+      "apiKey": "YOUR_GOOGLE_PLACES_API_KEY"
+    }
+  }
+}

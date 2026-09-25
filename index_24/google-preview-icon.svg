@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Google preview icon">
+  <rect width="512" height="512" fill="#000000"/>
+  <path
+    d="M360 112
+       A184 184 0 1 0 360 400
+       M360 256
+       H468"
+    fill="none"
+    stroke="#F4D000"
+    stroke-width="88"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

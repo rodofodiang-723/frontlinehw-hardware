@@ -1,0 +1,15 @@
+{
+  "name": "frontline-hardware-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Dependency manifest for the Frontline Hardware static site.",
+  "scripts": {
+    "audit": "npm audit --omit=dev"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "7.3.1",
+    "@supabase/supabase-js": "2.117.1",
+    "gsap": "3.15.0",
+    "swiper": "14.2.0"
+  }
+}

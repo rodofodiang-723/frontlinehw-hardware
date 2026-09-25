@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; connect-src 'self' https://*.supabase.co https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://places.googleapis.com; script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'sha256-QtRpnUVTDLxh+Re2bksR/yUTXk/FXDBLiueyovaxrYg='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me">
+<title>Frontline Hardware Nairobi | Power Tools, Building Materials & Hardware Supplies</title>
+<meta name="description" content="Frontline Hardware is a trusted hardware store in Nairobi, Kenya for power tools, building materials, paints, locks, safety gear, and construction essentials.">
+<meta name="keywords" content="Frontline Hardware Nairobi, hardware store Nairobi, building materials Nairobi Kenya, power tools Nairobi, construction supplies Kenya, paints Nairobi, safety gear Nairobi, locks Nairobi">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="canonical" href="https://frontlinehardware.netlify.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Frontline Hardware">
+<meta property="og:locale" content="en_KE">
+<meta property="og:title" content="Frontline Hardware Nairobi | Power Tools, Building Materials & Hardware Supplies">
+<meta property="og:description" content="Shop quality power tools, building materials, paints, safety gear, locks, and construction essentials in Nairobi, Kenya at Frontline Hardware.">
+<meta property="og:image" content="https://frontlinehardware.netlify.app/gallery-images/frontline-logo.png">
+<meta property="og:image:alt" content="Frontline Hardware Nairobi logo">
+<meta property="og:image:type" content="image/png">
+<meta property="og:url" content="https://frontlinehardware.netlify.app/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Frontline Hardware Nairobi | Power Tools, Building Materials & Hardware Supplies">
+<meta name="twitter:description" content="Trusted hardware store in Nairobi, Kenya for power tools, construction materials, paints, safety gear, and building essentials.">
+<meta name="twitter:image" content="https://frontlinehardware.netlify.app/gallery-images/frontline-logo.png">
+<meta name="twitter:image:alt" content="Frontline Hardware Nairobi logo">
+<script type="application/ld+json">
+
+
+{
+  "@context": "https://schema.org",
+  "@type": ["HardwareStore", "LocalBusiness"],
+  "name": "Frontline Hardware",
+  "slogan": "Keep Moving Forward",
+  "description": "Frontline Hardware is a trusted hardware store in Nairobi, Kenya supplying power tools, building materials, paints, safety gear, locks, and construction essentials for homes, contractors, and businesses.",
+  "url": "https://frontlinehardware.netlify.app/",
+  "telephone": "+254727791535",
+  "email": "frontlinehw@gmail.com",
+  "image": "https://frontlinehardware.netlify.app/gallery-images/frontline-logo.png",
+  "priceRange": "KES",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Chiriku Lane, Kamkunji Road",
+    "addressLocality": "Nairobi",
+    "addressRegion": "Nairobi County",
+    "addressCountry": "KE"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Nairobi" },
+    { "@type": "Country", "name": "Kenya" }
+  ],
+  "sameAs": [
+    "https://wa.me/254727791535",
+    "https://www.instagram.com/frontlinehwkenya",
+    "https://www.tiktok.com/@frontlinehwgikomba",
+    "https://www.facebook.com/FRONTLINEHWKENYA",
+    "mailto:frontlinehw@gmail.com",
+    "https://x.com/frontlinehwxy"
+  ],
+  "openingHours": "Mo-Sa 07:30-18:30",
+  "currenciesAccepted": "KES",
+  "paymentAccepted": "Cash, Mpesa, Bank Transfer",
+  "hasMap": "https://www.google.com/maps?q=Chiriku+Lane+Kamkunji+Road+Nairobi",
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Work+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/14.2.0/swiper-bundle.min.css">
+<link rel="stylesheet" href="index_24.css">
+
+
+
+
+</head>
+
+<body>
+
+<a class="skip-link" href="#view-home">Skip to main content</a>
+
+<div id="loader"><img class="loader-logo" src="assets/optimized/inline-001.png" alt="Frontline Hardware"><div class="loader-track"><div class="loader-fill"></div></div></div>
+
+
+<!-- ============ HEADER ============ -->
+<header id="siteHeader">
+  <div class="container nav-inner">
+    <a href="#home" class="logo"><img src="gallery-images/frontline-logo.png" alt="Frontline Hardware"></a>
+    <nav class="main-links">
+      <a href="#home">Home</a>
+      <a href="#offers">Offers</a>
+      <div class="has-mega">
+        <a class="mega-trigger" id="megaTrigger" href="#products" aria-haspopup="true" aria-expanded="false" aria-controls="megaMenu">Products <i class="fa-solid fa-chevron-down mega-trigger-icon" aria-hidden="true"></i></a>
+        <div class="mega" id="megaMenu" role="menu"></div>
+      </div>
+      <a href="#gallery">Projects</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button type="button" class="icon-btn" id="searchToggle" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <button type="button" class="icon-btn badge-btn" id="cartToggle" aria-label="View quote list"><i class="fa-solid fa-cart-shopping"></i><span class="icon-badge" id="cartCount">0</span></button>
+      <button type="button" class="icon-btn" id="themeToggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      <button class="btn btn-secondary btn-sm nav-delivery" id="deliveryToggle" type="button" aria-label="Arrange delivery" title="Arrange delivery"><i class="fa-solid fa-truck" aria-hidden="true"></i> <span>Delivery</span></button>
+      <a href="https://wa.me/254727791535?text=Hi%20Frontline%20Hardware%2C%20I%27d%20like%20to%20request%20a%20quote." target="_blank" rel="noopener" class="btn btn-primary btn-sm" id="navQuote">Get Quote</a>
+      <button type="button" class="icon-btn burger" id="burgerToggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay">
+  <button type="button" class="search-close" id="searchClose" aria-label="Close search"><i class="fa-solid fa-xmark"></i></button>
+  <label for="searchInput" class="sr-only">Search products</label>
+  <input type="text" placeholder="Search power tools, brands, categories…" id="searchInput">
+  <div class="search-results" id="searchResults"></div>
+</div>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home">Home</a>
+  <a href="#offers">Offers</a>
+  <a href="#products">Products</a>
+  <a href="#gallery">Projects</a>
+  <a href="#faq">FAQ</a>
+  <a href="#contact">Contact</a>
+  <a href="https://www.google.com/maps?q=Chiriku+Lane+Kamkunji+Road+Nairobi" target="_blank" rel="noopener">Location</a>
+  <button class="btn btn-secondary mobile-delivery-btn" id="mobileDeliveryToggle" type="button"><i class="fa-solid fa-truck" aria-hidden="true"></i> Arrange Delivery</button>
+  <div class="mobile-menu-section">
+    <h3>Categories</h3>
+    <div id="mobileCategoryList"></div>
+  </div>
+  <a href="https://wa.me/254727791535?text=Hi%20Frontline%20Hardware%2C%20I%27d%20like%20to%20request%20a%20quote." target="_blank" rel="noopener" class="btn btn-primary mobile-quote-btn">Request a Quote</a>
+</div>
+
+<div class="delivery-modal" id="deliveryModal" role="dialog" aria-modal="true" aria-labelledby="deliveryTitle" hidden>
+  <div class="delivery-modal-card">
+    <button class="delivery-modal-close" id="deliveryClose" type="button" aria-label="Close delivery form"><i class="fa-solid fa-xmark"></i></button>
+    <div class="delivery-modal-body">
+      <div class="eyebrow">Delivery Request</div>
+      <h2 id="deliveryTitle">Arrange A Delivery</h2>
+      <p class="delivery-intro">Tell us where the package starts, where it should go, and what you need delivered.</p>
+      <form id="deliveryForm" class="delivery-form">
+        <input class="form-trap" id="deliveryWebsite" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div>
+          <label for="deliveryFrom">Pickup location</label>
+          <input id="deliveryFrom" name="from" type="text" maxlength="160" placeholder="Where should we collect it from?" required>
+        </div>
+        <div>
+          <label for="deliveryTo">Delivery location</label>
+          <input id="deliveryTo" name="to" type="text" maxlength="160" placeholder="Where should we deliver it?" required>
+        </div>
+        <div>
+          <label for="deliveryPackage">Package details</label>
+          <textarea id="deliveryPackage" name="package" rows="3" maxlength="300" placeholder="What is in the package, and how many items?" required></textarea>
+        </div>
+        <div class="delivery-form-row">
+          <div>
+            <label for="deliveryName">Your name</label>
+            <input id="deliveryName" name="name" type="text" maxlength="100" placeholder="Your name" required>
+          </div>
+          <div>
+            <label for="deliveryPhone">Phone number</label>
+            <input id="deliveryPhone" name="phone" type="tel" maxlength="20" placeholder="07xx xxx xxx" required>
+          </div>
+        </div>
+        <button class="btn btn-wa delivery-submit" type="submit"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Send On WhatsApp</button>
+        <p class="form-status delivery-form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<main id="view-home" role="main" aria-labelledby="home-title">
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-bg duo-wrap">
+    <div class="hero-parallax">
+      <div class="hero-slider" id="heroSlider">
+        <div class="hero-slide"><img src="assets/optimized/inline-002.jpg" loading="eager" decoding="async" alt="Fluted panel strips in assorted finishes"></div>
+        <div class="hero-slide"><img loading="lazy" src="assets/optimized/inline-003.jpg" alt="Fluted panel TV feature wall"></div>
+        <div class="hero-slide"><img loading="lazy" src="assets/optimized/inline-004.jpg" alt="Fluted panel living room feature wall"></div>
+        <div class="hero-slide"><img loading="lazy" src="assets/optimized/inline-005.jpg" alt="Fluted panel and marble TV wall with gold accents"></div>
+        <div class="hero-slide"><img loading="lazy" src="assets/optimized/inline-006.jpg" alt="MDF board sheets in assorted finishes"></div>
+        <div class="hero-slide"><img loading="lazy" src="assets/optimized/inline-007.jpg" alt="MDF finish kitchen cabinetry"></div>
+        <div class="hero-slide"><img loading="lazy" src="assets/optimized/inline-008.jpg" alt="Wood grain MDF kitchen cabinetry"></div>
+        <div class="hero-slide"><img loading="lazy" src="assets/optimized/inline-009.jpg" alt="Marble sheet finish sample"></div>
+        <div class="hero-slide"><img loading="lazy" src="assets/optimized/inline-010.jpg" alt="Marble and fluted panel feature wall"></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <div class="eyebrow">Est. Nairobi · Hardware &amp; Construction Supply</div>
+    <h1 id="home-title">Frontline Hardware Nairobi</h1>
+    <a class="trust-inline" href="https://www.google.com/search?q=Frontline+Hardware+Nairobi+reviews" target="_blank" rel="noopener noreferrer" aria-label="Read our Google reviews (opens in a new tab)">
+      <div class="g-logo" aria-hidden="true">
+        <img src="google-preview-icon.svg" alt="Google logo" width="56" height="56">
+      </div>
+      <div class="trust-inline-body">
+        <div class="rating-num">Google</div>
+        <div class="rating-text">Verified reviews from our Google Business Profile</div>
+        <div class="g-stars" aria-hidden="true">
+          <i class="fa-regular fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+        </div>
+        <span class="sr-only">Open our Google Business Profile to read verified customer reviews</span>
+      </div>
+    </a>
+    <div class="hero-btns">
+      <a href="#products" class="btn btn-primary btn-lg">Shop With Us</a>
+      <button type="button" class="btn btn-ghost btn-lg" id="shareSiteBtn"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Share Site</button>
+    </div>
+    <p class="share-status" id="shareStatus" role="status" aria-live="polite"></p>
+  </div>
+  <div class="scroll-cue">SCROLL</div>
+  <div class="hero-stripe hstripe"></div>
+</section>
+
+<!-- ============ TRUST BAR ============ -->
+<!-- Trust bar -->
+
+<!-- ============ OFFERS & DEALS ============ -->
+<section class="section-pad section-alt" id="offers">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2 class="h2 reveal tight-heading">Offers &amp; Deals</h2>
+      </div>
+    </div>
+    <div class="swiper deals-swiper reveal deals-swiper-custom">
+      <div class="swiper-wrapper" id="dealsGrid"></div>
+      <div class="swiper-pagination deals-pagination"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad section-alt" aria-labelledby="popular-categories-title">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow reveal">Popular Categories</div>
+        <h2 class="h2 reveal tight-heading" id="popular-categories-title">Shop by Hardware Need</h2>
+      </div>
+    </div>
+    <div class="prod-grid reveal">
+      <article class="easy-card">
+        <img src="products/Seweco-Paints-Wood-Finishes-NC-Sanding-Sealer-4.4-Liters_213x234.avif" loading="lazy" decoding="async" alt="Seweco Paints Wood Finishes NC Sanding Sealer 4.4 Litres">
+        <h4><a href="power-tools.html">Power Tools Nairobi</a></h4>
+        <p>Drills, impact tools, grinders, and cordless power solutions for homes and contractors.</p>
+      </article>
+      <article class="easy-card">
+        <img src="products/Union-Assa-Abloy-Lever-Lockset-Door-Locks_213x234.avif" loading="lazy" decoding="async" alt="Union Assa Abloy Lever Lockset Door Lock">
+        <h4><a href="door-locks-security.html">Door Locks &amp; Security</a></h4>
+        <p>Quality door locks, lever sets, and security hardware for homes, offices, and rentals.</p>
+      </article>
+      <article class="easy-card">
+        <img src="products/Conta-Contact-Adhesive-1000ml_213x234.avif" loading="lazy" decoding="async" alt="Conta Contact Adhesive 1000ml">
+        <h4><a href="building-materials.html">Building Materials Nairobi</a></h4>
+        <p>Adhesives, finishes, and site essentials for renovation, construction, and finishing work.</p>
+      </article>
+      <article class="easy-card">
+        <img src="products/Seweco-Paints-Super-Standard-Thinner-5-Liters_213x234.avif" loading="lazy" decoding="async" alt="Seweco Paints Super Standard Thinner 5 Litres">
+        <h4><a href="paints-and-finishes.html">Paints &amp; Finishes</a></h4>
+        <p>Interior and exterior paints, sealers, thinners, and wood finishes for clean results.</p>
+      </article>
+      <article class="easy-card">
+        <img src="products/Union-Mortice-Lockset-Door-Lock_213x234.avif" loading="lazy" decoding="async" alt="Union Mortice Lockset Door Lock">
+        <h4><a href="safety-gear.html">Safety Gear Nairobi</a></h4>
+        <p>Work gloves, protective gear, and essential safety items for daily site productivity.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Easy-to-sell products inserted here -->
+<section class="section-pad easy-sell" id="easySell">
+  <div class="container">
+    <div class="eyebrow reveal eyebrow-centered">Top Products</div>
+    <h2 class="h2 reveal">Favourite-selling Products</h2>
+    <p class="lede reveal">Hand-picked items that sell fast at the counter — good margins, reliable stock and easy to explain to customers. Tap any item to view details or message us on WhatsApp for bulk pricing.</p>
+    <div class="swiper easy-sell-swiper reveal easy-sell-swiper-custom">
+      <div class="swiper-wrapper">
+        <article class="swiper-slide easy-card">
+          <img src="products/Seweco-Paints-Wood-Finishes-NC-Sanding-Sealer-4.4-Liters_213x234.avif" alt="Seweco Paints Wood Finishes NC Sanding Sealer 4.4L">
+          <h4>Seweco Paints Sanding Sealer 4.4L</h4>
+          <div class="price">KES 2,500</div>
+          <div class="card-details hidden">
+            <p><strong>Quality:</strong> Professional grade, trusted by contractors</p>
+            <p><strong>Stock:</strong> Reliable availability</p>
+          </div>
+          <div class="card-cta"><button class="btn btn-primary btn-sm" type="button" data-card-toggle>View Details</button> <a href="#products" class="btn btn-secondary btn-sm">Learn More</a> <a href="https://wa.me/254727791535" target="_blank" rel="noopener" class="btn btn-wa btn-sm">WhatsApp</a></div>
+        </article>
+        <article class="swiper-slide easy-card">
+          <img src="products/Seweco-Paints-Super-Standard-Thinner-5-Liters_213x234.avif" alt="Seweco Paints Super Standard Thinner 5L">
+          <h4>Seweco Super Standard Thinner 5L</h4>
+          <div class="price">KES 1,800</div>
+          <div class="card-details hidden">
+            <p><strong>Quality:</strong> Professional grade thinner for paints</p>
+            <p><strong>Stock:</strong> Reliable availability</p>
+          </div>
+          <div class="card-cta"><button class="btn btn-primary btn-sm" type="button" data-card-toggle>View Details</button> <a href="#products" class="btn btn-secondary btn-sm">Learn More</a> <a href="https://wa.me/254727791535" target="_blank" rel="noopener" class="btn btn-wa btn-sm">WhatsApp</a></div>
+        </article>
+        <article class="swiper-slide easy-card">
+          <img src="products/Ponal_Professional_White_Wood_Glue_4_Litres_4kg_213x234.avif" alt="Ponal Professional White Wood Glue 4L">
+          <h4>Ponal Professional Wood Glue 4L</h4>
+          <div class="price">KES 950</div>
+          <div class="card-details hidden">
+            <p><strong>Quality:</strong> Premium white wood glue for professional use</p>
+            <p><strong>Stock:</strong> Reliable availability</p>
+          </div>
+          <div class="card-cta"><button class="btn btn-primary btn-sm" type="button" data-card-toggle>View Details</button> <a href="#products" class="btn btn-secondary btn-sm">Learn More</a> <a href="https://wa.me/254727791535" target="_blank" rel="noopener" class="btn btn-wa btn-sm">WhatsApp</a></div>
+        </article>
+        <article class="swiper-slide easy-card">
+          <img src="products/Pattex-PUR-Wood-Glue_915b5317-dbb5-4a53-8a8e-9f26c8d0f108_213x234.avif" alt="Pattex PUR Wood Glue">
+          <h4>Pattex PUR Wood Glue</h4>
+          <div class="price">KES 1,200</div>
+          <div class="card-details hidden">
+            <p><strong>Quality:</strong> Premium PUR polyurethane wood adhesive</p>
+            <p><strong>Stock:</strong> Reliable availability</p>
+          </div>
+          <div class="card-cta"><button class="btn btn-primary btn-sm" type="button" data-card-toggle>View Details</button> <a href="#products" class="btn btn-secondary btn-sm">Learn More</a> <a href="https://wa.me/254727791535" target="_blank" rel="noopener" class="btn btn-wa btn-sm">WhatsApp</a></div>
+        </article>
+        <article class="swiper-slide easy-card">
+          <img src="products/Conta-Contact-Adhesive-1000ml_213x234.avif" alt="Conta Contact Adhesive 1000ml">
+          <h4>Conta Contact Adhesive 1000ml</h4>
+          <div class="price">KES 2,100</div>
+          <div class="card-details hidden">
+            <p><strong>Quality:</strong> Professional contact adhesive for materials</p>
+            <p><strong>Stock:</strong> Reliable availability</p>
+          </div>
+          <div class="card-cta"><button class="btn btn-primary btn-sm" type="button" data-card-toggle>View Details</button> <a href="#products" class="btn btn-secondary btn-sm">Learn More</a> <a href="https://wa.me/254727791535" target="_blank" rel="noopener" class="btn btn-wa btn-sm">WhatsApp</a></div>
+        </article>
+        <article class="swiper-slide easy-card">
+          <img src="products/Conta-Contact-Adhesive-4-Liters_213x234.avif" alt="Conta Contact Adhesive 4L">
+          <h4>Conta Contact Adhesive 4L</h4>
+          <div class="price">KES 6,500</div>
+          <div class="card-details hidden">
+            <p><strong>Quality:</strong> Professional contact adhesive for bulk applications</p>
+            <p><strong>Stock:</strong> Reliable availability</p>
+          </div>
+          <div class="card-cta"><button class="btn btn-primary btn-sm" type="button" data-card-toggle>View Details</button> <a href="#products" class="btn btn-secondary btn-sm">Learn More</a> <a href="https://wa.me/254727791535" target="_blank" rel="noopener" class="btn btn-wa btn-sm">WhatsApp</a></div>
+        </article>
+        <article class="swiper-slide easy-card">
+          <img src="products/Union-Assa-Abloy-Cylinder-Lockset-Door-Locks_213x234.avif" alt="Union Assa Abloy Cylinder Lockset">
+          <h4>Union Assa Abloy Cylinder Lockset</h4>
+          <div class="price">KES 3,200</div>
+          <div class="card-details hidden">
+            <p><strong>Quality:</strong> Premium cylinder door lock by trusted Union brand</p>
+            <p><strong>Stock:</strong> Reliable availability</p>
+          </div>
+          <div class="card-cta"><button class="btn btn-primary btn-sm" type="button" data-card-toggle>View Details</button> <a href="#products" class="btn btn-secondary btn-sm">Learn More</a> <a href="https://wa.me/254727791535" target="_blank" rel="noopener" class="btn btn-wa btn-sm">WhatsApp</a></div>
+        </article>
+        <article class="swiper-slide easy-card">
+          <img src="products/Union-Assa-Abloy-Lever-Lockset-Door-Locks_213x234.avif" alt="Union Assa Abloy Lever Lockset">
+          <h4>Union Assa Abloy Lever Lockset</h4>
+          <div class="price">KES 3,500</div>
+          <div class="card-details hidden">
+            <p><strong>Quality:</strong> Premium lever door lock by Union Assa Abloy</p>
+            <p><strong>Stock:</strong> Reliable availability</p>
+          </div>
+          <div class="card-cta"><button class="btn btn-primary btn-sm" type="button" data-card-toggle>View Details</button> <a href="#products" class="btn btn-secondary btn-sm">Learn More</a> <a href="https://wa.me/254727791535" target="_blank" rel="noopener" class="btn btn-wa btn-sm">WhatsApp</a></div>
+        </article>
+        <article class="swiper-slide easy-card">
+          <img src="products/Union-Door-Lock-Black_213x234.avif" alt="Union Door Lock Black">
+          <h4>Union Door Lock - Black</h4>
+          <div class="price">KES 2,800</div>
+          <div class="card-details hidden">
+            <p><strong>Quality:</strong> Premium black door lock by Union brand</p>
+            <p><strong>Stock:</strong> Reliable availability</p>
+          </div>
+          <div class="card-cta"><button class="btn btn-primary btn-sm" type="button" data-card-toggle>View Details</button> <a href="#products" class="btn btn-secondary btn-sm">Learn More</a> <a href="https://wa.me/254727791535" target="_blank" rel="noopener" class="btn btn-wa btn-sm">WhatsApp</a></div>
+        </article>
+        <article class="swiper-slide easy-card">
+          <img src="products/Union-Mortice-Lockset-Door-Lock_213x234.avif" alt="Union Mortice Lockset">
+          <h4>Union Mortice Lockset</h4>
+          <div class="price">KES 3,800</div>
+          <div class="card-details hidden">
+            <p><strong>Quality:</strong> Premium mortice door lock set by Union</p>
+            <p><strong>Stock:</strong> Reliable availability</p>
+          </div>
+          <div class="card-cta"><button class="btn btn-primary btn-sm" type="button" data-card-toggle>View Details</button> <a href="#products" class="btn btn-secondary btn-sm">Learn More</a> <a href="https://wa.me/254727791535" target="_blank" rel="noopener" class="btn btn-wa btn-sm">WhatsApp</a></div>
+        </article>
+      </div>
+      <div class="swiper-pagination easy-sell-pagination"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CASE STUDIES / PROJECT APPLICATIONS ============ -->
+<section class="section-pad" id="gallery">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow reveal">Case Studies</div>
+        <h2 class="h2 reveal tight-heading">Materials In Real Spaces</h2>
+      </div>
+    </div>
+    <div class="swiper service-swiper reveal">
+      <div class="swiper-wrapper" id="galleryGrid"></div>
+      <div class="service-swiper-controls">
+        <button class="service-swiper-prev" type="button" aria-label="Previous service"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></button>
+        <div class="swiper-pagination service-pagination"></div>
+        <button class="service-swiper-next" type="button" aria-label="Next service"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="interior-gallery-modal" id="interiorGalleryModal" role="dialog" aria-modal="true" aria-labelledby="interiorGalleryTitle" hidden>
+  <div class="interior-gallery-panel">
+    <button class="interior-gallery-close" id="interiorGalleryClose" type="button" aria-label="Close projects"><i class="fa-solid fa-xmark"></i></button>
+    <h2 id="interiorGalleryTitle">Interior Design Projects</h2>
+    <div class="interior-gallery-grid" id="interiorGalleryGrid"></div>
+  </div>
+</div>
+
+<section class="brand-strip">
+  <div class="eyebrow reveal eyebrow-centered">Featured Brands We Stock</div>
+  <div class="marquee-track" id="brandTrack"></div>
+  <div class="marquee-track reverse" id="brandTrack2"></div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section-pad" id="faq">
+  <div class="container">
+    <div class="eyebrow reveal eyebrow-centered">Need To Know</div>
+    <h2 class="h2 reveal faq-title">Frequently Asked Questions</h2>
+    <div class="faq-wrap reveal faq-wrap-custom" id="faqWrap"></div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section-pad" id="contact">
+  <div class="container">
+    <div class="eyebrow reveal">Get In Touch</div>
+    <h2 class="h2 reveal">Talk To The Team</h2>
+    <div class="contact-grid reveal contact-grid-custom">
+      <div class="contact-info">
+        <div class="eyebrow">Frontline Hardware</div>
+        <div class="c-row"><i class="fa-solid fa-location-dot"></i><div><b>Visit The Store</b><span>Chiriku Lane, Kamkunji Road, Nairobi</span></div></div>
+        <div class="c-row"><i class="fa-solid fa-phone"></i><div><b>Call Us</b><span>+254 727 791 535</span></div></div>
+        <div class="c-row"><i class="fa-brands fa-whatsapp"></i><div><b>WhatsApp</b><span>+254 727 791 535</span></div></div>
+        <div class="c-row"><i class="fa-solid fa-envelope"></i><div><b>Email</b><span>frontlinehw@gmail.com</span></div></div>
+        <div class="c-row"><i class="fa-solid fa-clock"></i><div><b>Business Hours</b><span>Mon–Sat, 7:30am – 6:30pm</span></div></div>
+        <div class="hero-btns">
+          <a href="tel:+254727791535" class="btn btn-primary btn-sm">Call Now</a>
+          <a href="https://wa.me/254727791535" class="btn btn-wa btn-sm"><i class="fa-brands fa-whatsapp"></i>WhatsApp</a>
+        </div>
+        <iframe class="map-frame" loading="lazy" src="https://www.google.com/maps?q=Chiriku+Lane+Kamkunji+Road+Nairobi&output=embed" title="Frontline Hardware location map"></iframe>
+      </div>
+      <form class="contact-form" id="contactForm">
+        <input class="form-trap" id="cfWebsite" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div>
+          <label for="cfName">Full Name</label>
+          <input type="text" id="cfName" maxlength="120" placeholder="Your name" required>
+        </div>
+        <div class="form-row">
+          <div><label for="cfPhone">Phone</label><input type="tel" id="cfPhone" maxlength="20" placeholder="07xx xxx xxx" required></div>
+          <div><label for="cfEmail">Email</label><input type="email" id="cfEmail" maxlength="254" placeholder="you@email.com"></div>
+        </div>
+        <div>
+          <label for="cfNeed">What do you need?</label>
+          <select id="cfNeed"><option>Product Enquiry</option><option>Bulk / Site Order</option><option>Tool Hire</option><option>Technical Consultation</option><option>Other</option></select>
+        </div>
+        <div>
+          <label for="cfMessage">Message</label>
+          <textarea rows="4" id="cfMessage" maxlength="1000" placeholder="Tell us what you're building…"></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark contact-submit-btn">Send Enquiry</button>
+        <p class="form-status" id="cfStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+</main>
+
+<main id="view-products" class="is-hidden" role="main" aria-label="Products">
+<!-- ============ PRODUCTS HERO ============ -->
+<section class="products-hero">
+  <div class="container">
+    <div class="eyebrow">Full Catalogue</div>
+    <h1>Shop All Products</h1>
+    <p>Every product we stock at Chiriku Lane, Kamkunji Road — organised by category. Search, filter, or jump straight to what you need below.</p>
+    <div class="quick-nav" id="heroQuickNav"></div>
+  </div>
+</section>
+
+<!-- ============ STICKY CATEGORY NAV ============ -->
+<div class="cat-nav-wrap">
+  <div class="container">
+    <div class="cat-nav-scroll" id="catNavScroll"></div>
+  </div>
+</div>
+
+<!-- ============ PRODUCT CATALOGUE ============ -->
+<section class="section-pad products-section" id="products">
+  <div class="container">
+    <div class="prod-filters reveal" id="prodFilters">
+      <div class="pf-search"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><input type="text" id="pfSearch" placeholder="Search products…"></div>
+      <select id="pfBrand" title="Filter by brand"><option value="">All Brands</option></select>
+      <select id="pfCategory" title="Filter by category"><option value="">All Categories</option></select>
+      <select id="pfPrice" title="Filter by price">
+        <option value="">Any Price</option>
+        <option value="0-3000">Under KES 3,000</option>
+        <option value="3000-8000">KES 3,000 – 8,000</option>
+        <option value="8000-15000">KES 8,000 – 15,000</option>
+        <option value="15000-999999">Above KES 15,000</option>
+      </select>
+      <button type="button" id="showAllCatsBtn" class="btn btn-outline-dark btn-sm">Show all categories</button>
+    </div>
+    <p class="pf-count" id="pfCount"></p>
+    <div id="prodGroups"></div>
+  </div>
+</section>
+
+<!-- ============ CORDLESS TOOLS (WhatsApp price on request) ============ -->
+<section class="section-pad section-alt" id="cordless">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow reveal">20V / 12V / 18V Ranges</div>
+        <h2 class="h2 reveal tight-heading">Cordless Power Tools</h2>
+      </div>
+    </div>
+    <p class="reveal cordless-lede">Prices on cordless tools move with stock and battery/charger combos, so message us on WhatsApp for the latest price on any item below.</p>
+    <div class="prod-grid" id="cordlessGrid"></div>
+  </div>
+</section>
+
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <img class="foot-logo" src="frontlinehw-logo.svg" alt="Frontline Hardware">
+        <p class="foot-desc">Professional hardware, tools and construction supplies for contractors, companies, fundis and homeowners across Kenya. Keep Moving Forward.</p>
+        <div class="social-row">
+          <a href="https://www.instagram.com/frontlinehwkenya" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+          <a href="https://www.tiktok.com/@frontlinehwgikomba" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+          <a href="https://www.facebook.com/FRONTLINEHWKENYA" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="mailto:frontlinehw@gmail.com" aria-label="Email frontlinehw@gmail.com" title="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+          <a href="https://x.com/frontlinehwxy" target="_blank" rel="noopener" aria-label="X / Twitter" title="X / Twitter"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+        </div>
+        <div class="foot-visit">
+          <div><i class="fa-solid fa-location-dot"></i> Chiriku Lane, Kamkunji Road, Nairobi <a href="https://www.google.com/maps?q=Chiriku+Lane+Kamkunji+Road+Nairobi" target="_blank" rel="noopener">Get Directions -&gt;</a></div>
+          <div><i class="fa-solid fa-clock"></i> Mon–Sat, 7:30am – 6:30pm</div>
+        </div>
+      </div>
+      <div>
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#offers">Offers</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#gallery">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Policies</h5>
+        <ul>
+          <li><a href="policies/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="policies/terms-and-conditions.html">Terms &amp; Conditions</a></li>
+          <li><a href="policies/delivery-policy.html">Delivery Policy</a></li>
+          <li><a href="policies/returns-refund-policy.html">Returns &amp; Refunds</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Stay Updated</h5>
+        <p class="newsletter-copy">Get new stock and site-offer alerts straight to your inbox.</p>
+        <form class="nl-form" id="newsletterForm">
+          <label for="nlEmail" class="sr-only">Email address</label>
+          <input type="email" id="nlEmail" placeholder="Your email address" required>
+          <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-arrow-right"></i></button>
+        </form>
+        <p class="form-status" id="nlStatus" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span id="year"></span> Frontline Hardware. All rights reserved.</span>
+      <span>Keep Moving Forward.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+
+<div class="drawer" id="wishlistDrawer" role="dialog" aria-label="Wishlist">
+  <div class="drawer-head"><h3><i class="fa-solid fa-heart drawer-head-icon"></i> Wishlist</h3><button type="button" class="drawer-close" id="wishlistClose" aria-label="Close wishlist"><i class="fa-solid fa-xmark"></i></button></div>
+  <div class="drawer-body" id="wishlistBody"></div>
+</div>
+
+<div class="drawer" id="cartDrawer" role="dialog" aria-label="Quote list">
+  <div class="drawer-head"><h3><i class="fa-solid fa-cart-shopping"></i> Quote List</h3><button type="button" class="drawer-close" id="cartClose" aria-label="Close quote list"><i class="fa-solid fa-xmark"></i></button></div>
+  <div class="drawer-body" id="cartBody"></div>
+  <div class="drawer-foot is-hidden" id="cartFoot">
+    <div class="drawer-total"><span>Estimated Total</span><span id="cartTotal">KES 0</span></div>
+    <a href="#" id="cartWaBtn" class="btn btn-wa" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Send Quote Request</a>
+    <button type="button" class="btn btn-outline-dark btn-sm" id="cartClearBtn">Clear List</button>
+  </div>
+</div>
+
+<div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
+  <div class="product-modal-card">
+    <button type="button" class="product-modal-close" id="pmClose" aria-label="Close product details"><i class="fa-solid fa-xmark"></i></button>
+    <img id="pmImg" src="" alt="Product image">
+    <div class="product-modal-body">
+      <span class="prod-brand" id="pmMeta"></span>
+      <h3 id="pmTitle"></h3>
+      <p id="pmDesc"></p>
+      <div class="prod-price" id="pmPrice"></div>
+      <div class="product-options" id="pmOptions" aria-label="Product options"></div>
+      <div class="product-modal-actions">
+        <a href="#" id="pmWa" class="btn btn-wa btn-sm" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Buy via WhatsApp</a>
+        <a href="tel:+254727791535" class="btn btn-outline-dark btn-sm"><i class="fa-solid fa-phone"></i> Call Now</a>
+        <button type="button" id="pmCartAdd" class="btn btn-outline-dark btn-sm"><i class="fa-solid fa-cart-plus"></i> Add to Quote List</button>
+        <button type="button" id="pmWishToggle" class="btn btn-outline-dark btn-sm"><i class="fa-regular fa-heart"></i> Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Reviews modal (opens with `t` key or the floating star button) -->
+<div class="reviews-modal" id="reviewsModal" role="dialog" aria-modal="true" aria-labelledby="reviewsTitle">
+  <div class="reviews-modal-card">
+    <button type="button" class="reviews-close" id="reviewsClose" aria-label="Close reviews"><i class="fa-solid fa-xmark"></i></button>
+    <div class="reviews-modal-body">
+      <h3 id="reviewsTitle">Customer Reviews</h3>
+      <div class="reviews-meta">Press <kbd>t</kbd> to open reviews</div>
+      <div class="reviews-list" id="reviewsList">Loading reviews…</div>
+    </div>
+  </div>
+</div>
+<button type="button" class="float-reviews" id="floatReviews" aria-label="Open reviews"><i class="fa-solid fa-star"></i></button>
+
+<div class="chatbot-widget" id="chatbotWidget" aria-live="polite">
+  <button class="chatbot-launch" id="chatbotLaunch" type="button" aria-expanded="false" aria-controls="chatbotPanel" aria-label="Open Frontline Hardware assistant">
+    <i class="fa-solid fa-comments"></i>
+  </button>
+
+  <div class="chatbot-panel" id="chatbotPanel" role="dialog" aria-modal="false" aria-labelledby="chatbotTitle">
+    <div class="chatbot-header">
+      <div class="chatbot-header-copy">
+        <div class="chatbot-badge">Store assistant</div>
+        <h3 id="chatbotTitle">Frontline Helper</h3>
+      </div>
+      <button class="chatbot-close" id="chatbotClose" type="button" aria-label="Close assistant"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <div class="chatbot-messages" id="chatbotMessages">
+      <div class="bot-message">
+        <div class="avatar"><i class="fa-solid fa-robot"></i></div>
+        <div class="message-bubble">
+          Hi! I can help with product enquiries, delivery, pricing, and stock questions. Ask me anything about tools, paints, locks, or bulk orders.
+        </div>
+      </div>
+    </div>
+
+    <div class="chatbot-suggestions" id="chatbotSuggestions">
+      <button type="button" data-bot-suggest="Power tools">Power tools</button>
+      <button type="button" data-bot-suggest="Paints">Paints</button>
+      <button type="button" data-bot-suggest="Door locks">Door locks</button>
+      <button type="button" data-bot-suggest="Delivery">Delivery</button>
+    </div>
+
+    <form class="chatbot-form" id="chatbotForm">
+      <label for="chatbotInput" class="sr-only">Ask the assistant</label>
+      <input id="chatbotInput" type="text" placeholder="Type your question…" autocomplete="off" />
+      <button class="chatbot-cancel" id="chatbotCancel" type="button" aria-label="Finish conversation">Done</button>
+      <button type="submit" aria-label="Send message"><i class="fa-solid fa-paper-plane"></i></button>
+    </form>
+  </div>
+</div>
+
+<a href="https://wa.me/254727791535" class="float-wa" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+<a href="tel:+254727791535" class="float-call" aria-label="Call Frontline Hardware"><i class="fa-solid fa-phone"></i></a>
+<a href="#contact" class="mobile-sticky-cta"><i class="fa-solid fa-comment-dots" aria-hidden="true"></i><span>Get A Quote</span></a>
+<button type="button" class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<aside class="cookie-banner" id="cookieBanner" aria-label="Cookie consent" hidden>
+  <div class="cookie-copy">
+    <strong>Cookies on Frontline Hardware</strong>
+    <p>We use essential cookies to keep the website working and remember your choice.</p>
+  </div>
+  <div class="cookie-actions">
+    <button class="btn btn-secondary btn-sm" id="cookieReject" type="button">Reject</button>
+    <button class="btn btn-primary btn-sm" id="cookieAccept" type="button">Accept</button>
+  </div>
+</aside>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/14.2.0/swiper-bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+<script src="index_24.js"></script>
+</body>
+</html>
+
+
+

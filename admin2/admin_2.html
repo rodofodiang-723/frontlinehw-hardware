@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; connect-src 'self' https://*.supabase.co https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com data:; object-src 'none'; base-uri 'self'; frame-ancestors 'self'">
+<title>Staff Dashboard - Frontline Hardware</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="../index_24/frontlinehw-logo.svg">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1"></script>
+<link rel="stylesheet" href="admin_2.css">
+</head>
+<body>
+
+<div id="toastWrap"></div>
+<div id="bootScreen" class="boot-screen">
+  <div class="boot-spinner"></div>
+  <div class="boot-text" id="bootText">Loading admin dashboard...</div>
+</div>
+
+<!-- ============ LOGIN SCREEN ============ -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-head">
+      <h2>Frontline Staff Dashboard</h2>
+      <p>Secure sign-in for admin and operations team.</p>
+    </div>
+    <div class="login-body">
+      <form id="loginForm" novalidate>
+        <div class="field" id="fLoginEmail">
+          <label for="loginEmail">Email <span class="req">*</span></label>
+          <input type="email" id="loginEmail" required autocomplete="username" placeholder="you@frontline.co.ke">
+          <small class="error-text">Please enter a valid email.</small>
+        </div>
+        <div class="field" id="fLoginPassword">
+          <label for="loginPassword">Password <span class="req">*</span></label>
+          <input type="password" id="loginPassword" required autocomplete="current-password" placeholder="Enter your password">
+          <small class="error-text">Password is required.</small>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" id="loginBtn"><i class="fa-solid fa-right-to-bracket"></i> Sign In</button>
+        <p class="msg err" id="loginMsg"></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ============ DASHBOARD ============ -->
+<div id="dashboard">
+  <header class="top">
+    <div class="brand">
+      <button type="button" class="icon-btn" id="sidebarToggle" title="Menu"><i class="fa-solid fa-bars"></i></button>
+      <div class="brand-mark"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+      <h1>Frontline Hardware <span>Staff Dashboard</span></h1>
+    </div>
+    <div class="top-actions">
+      <button type="button" class="icon-btn" id="notifBtn" title="Notifications"><i class="fa-regular fa-bell"></i></button>
+      <button type="button" class="icon-btn" id="themeBtn" title="Toggle dark mode"><i class="fa-regular fa-moon"></i></button>
+      <button type="button" class="btn btn-outline btn-sm" id="logoutBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="profile-mini">
+        <div class="avatar" id="profileInitial">A</div>
+        <div>
+          <b id="whoami">staff@frontline.co.ke</b>
+          <span id="roleBadge">Role: Staff</span>
+        </div>
+      </div>
+
+      <div class="nav-sec">
+        <h4>Navigation</h4>
+        <button type="button" class="nav-btn active" data-tab="products"><span><i class="fa-solid fa-boxes-stacked"></i> Products</span><span id="prodCountSide" class="count-pill">0</span></button>
+        <button type="button" class="nav-btn" data-tab="offers"><span><i class="fa-solid fa-tags"></i> Offers & Deals</span><span id="offersBadge" class="count-pill">0</span></button>
+        <button type="button" class="nav-btn" data-tab="leads"><span><i class="fa-solid fa-envelope-open-text"></i> Enquiries</span><span id="leadsBadge" class="count-pill">0</span></button>
+      </div>
+
+      <div class="nav-sec">
+        <h4>Coming Soon</h4>
+        <button class="nav-btn" type="button" disabled><span><i class="fa-regular fa-calendar-check"></i> Attendance</span></button>
+        <button class="nav-btn" type="button" disabled><span><i class="fa-solid fa-file-invoice-dollar"></i> Payroll</span></button>
+        <button class="nav-btn" type="button" disabled><span><i class="fa-solid fa-id-card"></i> Staff ID Cards</span></button>
+      </div>
+    </aside>
+    <div id="sidebarScrim" aria-hidden="true"></div>
+
+    <main class="content">
+      <div class="breadcrumb">
+        <span>Dashboard</span><i class="fa-solid fa-chevron-right"></i><span id="crumbCurrent">Products</span>
+      </div>
+
+      <div id="configBanner" class="config-banner hidden">
+        <strong>Backend not configured.</strong>
+        Set <code>supabase.url</code> and <code>supabase.anonKey</code> in <code>admin-config.json</code>, then reload.
+      </div>
+
+      <section class="analytics-grid" id="analyticsGrid">
+        <article class="stat-card"><div class="stat-top"><span>Total Products</span><span class="stat-icon"><i class="fa-solid fa-boxes-stacked"></i></span></div><div class="stat-value" id="statTotalProducts">0</div><div class="stat-note">All listed items</div></article>
+        <article class="stat-card"><div class="stat-top"><span>In Stock</span><span class="stat-icon"><i class="fa-solid fa-circle-check"></i></span></div><div class="stat-value" id="statInStock">0</div><div class="stat-note">Ready to sell</div></article>
+        <article class="stat-card"><div class="stat-top"><span>Low Stock</span><span class="stat-icon"><i class="fa-solid fa-triangle-exclamation"></i></span></div><div class="stat-value" id="statLowStock">0</div><div class="stat-note">Needs attention</div></article>
+        <article class="stat-card"><div class="stat-top"><span>Pre-Order</span><span class="stat-icon"><i class="fa-solid fa-hourglass-half"></i></span></div><div class="stat-value" id="statPreOrder">0</div><div class="stat-note">Awaiting restock</div></article>
+        <article class="stat-card"><div class="stat-top"><span>Categories</span><span class="stat-icon"><i class="fa-solid fa-layer-group"></i></span></div><div class="stat-value" id="statCategories">0</div><div class="stat-note">Unique product groups</div></article>
+        <article class="stat-card"><div class="stat-top"><span>Enquiries</span><span class="stat-icon"><i class="fa-solid fa-envelope-open-text"></i></span></div><div class="stat-value" id="statEnquiries">0</div><div class="stat-note">Customer messages</div></article>
+      </section>
+
+      <section class="subgrid">
+        <div>
+          <div class="tabs">
+            <button type="button" class="tab-btn active" data-tab="products">Products</button>
+            <button type="button" class="tab-btn" data-tab="offers">Offers & Deals</button>
+            <button type="button" class="tab-btn" data-tab="leads">Enquiries</button>
+          </div>
+
+          <!-- PRODUCTS TAB -->
+          <div class="tab-panel active" id="tab-products">
+            <!-- TOP PRODUCTS SECTION SETTINGS -->
+            <div class="panel section-settings">
+              <div class="section-settings-head">
+                <h3><i class="fa-solid fa-heading"></i> Top Products Section</h3>
+                <button type="button" class="toggle-btn" id="sectionToggle" title="Toggle section" aria-expanded="true"><i class="fa-solid fa-chevron-down"></i></button>
+              </div>
+              <form id="sectionForm" novalidate class="section-content">
+                <div class="form-grid">
+                  <div class="field span2">
+                    <label for="sectionEyebrow">Eyebrow Text <span class="req">*</span></label>
+                    <input type="text" id="sectionEyebrow" required placeholder="e.g. Top Products" value="Top Products">
+                    <small class="muted">The small uppercase label above the main heading</small>
+                  </div>
+                  <div class="field span2">
+                    <label for="sectionTitle">Main Title <span class="req">*</span></label>
+                    <input type="text" id="sectionTitle" required placeholder="e.g. Favourite-selling Products" value="Favourite-selling Products">
+                    <small class="muted">The large heading for the section</small>
+                  </div>
+                  <div class="field span2">
+                    <label for="sectionDescription">Section Description</label>
+                    <textarea id="sectionDescription" rows="3" placeholder="Hand-picked items that sell fast at the counter — good margins, reliable stock and easy to explain to customers. Tap any item to view details or message us on WhatsApp for bulk pricing.">Hand-picked items that sell fast at the counter — good margins, reliable stock and easy to explain to customers. Tap any item to view details or message us on WhatsApp for bulk pricing.</textarea>
+                    <small class="muted">Description shown under the main title</small>
+                  </div>
+                </div>
+                <div class="form-actions">
+                  <button type="submit" class="btn btn-primary" id="saveSectionBtn"><i class="fa-solid fa-check"></i> Update Section</button>
+                  <p class="msg" id="sectionMsg"></p>
+                </div>
+              </form>
+              <div class="top-products-picker">
+                <div class="picker-head">
+                  <div>
+                    <h4><i class="fa-solid fa-star"></i> Choose Top-Selling Products</h4>
+                    <p class="muted">Select the products that should appear in the storefront Top Products section.</p>
+                  </div>
+                  <span class="count-pill" id="topProductCount">0 selected</span>
+                </div>
+                <div class="top-product-list" id="topProductPicker">
+                  <p class="muted">Products will appear here after they load.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- POPULAR CATEGORIES SECTION SETTINGS -->
+            <div class="panel section-settings">
+              <div class="section-settings-head">
+                <h3><i class="fa-solid fa-grid-2"></i> Popular Categories Section</h3>
+                <button type="button" class="toggle-btn" id="popularCategoriesToggle" title="Toggle section" aria-expanded="true"><i class="fa-solid fa-chevron-down"></i></button>
+              </div>
+              <form id="popularCategoriesForm" novalidate class="section-content">
+                <div class="form-grid">
+                  <div class="field span2">
+                    <label for="popularCategoriesEyebrow">Eyebrow Text <span class="req">*</span></label>
+                    <input type="text" id="popularCategoriesEyebrow" required placeholder="e.g. Popular Categories" value="Popular Categories">
+                    <small class="muted">Small label above the section title</small>
+                  </div>
+                  <div class="field span2">
+                    <label for="popularCategoriesTitle">Main Title <span class="req">*</span></label>
+                    <input type="text" id="popularCategoriesTitle" required placeholder="e.g. Shop by Hardware Need" value="Shop by Hardware Need">
+                    <small class="muted">Large heading shown for this section</small>
+                  </div>
+                </div>
+
+                <div class="form-grid">
+                  <div class="field span2">
+                    <label for="popularCategory1Title">Card 1 Title</label>
+                    <input type="text" id="popularCategory1Title" placeholder="Power Tools Nairobi">
+                  </div>
+                  <div class="field span2">
+                    <label for="popularCategory1Text">Card 1 Description</label>
+                    <input type="text" id="popularCategory1Text" placeholder="Drills, impact tools and cordless solutions">
+                  </div>
+                  <div class="field span2">
+                    <label for="popularCategory1Link">Card 1 Link</label>
+                    <input type="text" id="popularCategory1Link" placeholder="power-tools.html">
+                  </div>
+                  <div class="field span2">
+                    <label for="popularCategory1Image">Card 1 Image</label>
+                    <div class="photo-row">
+                      <div class="photo-preview" id="popularCategory1Preview"><i class="fa-solid fa-image"></i></div>
+                      <div class="photo-uploader">
+                        <input type="file" id="popularCategory1Upload" accept="image/*" aria-label="Upload card 1 image" title="Upload card 1 image" placeholder="Upload card 1 image">
+                        <select id="popularCategory1ImageSelect" aria-label="Use existing product image for card 1" title="Use existing product image for card 1">
+                          <option value="">Use existing product image...</option>
+                        </select>
+                        <input type="text" id="popularCategory1Image" placeholder="products/your-image.avif" aria-label="Card 1 image path" title="Card 1 image path">
+                        <div class="card-action-row">
+                          <button type="button" class="btn btn-primary btn-sm" data-popular-card-save="1">Save card</button>
+                          <button type="button" class="btn btn-primary btn-sm" data-popular-image-update="1">Update image</button>
+                          <button type="button" class="btn btn-outline btn-sm" data-popular-image-clear="1">Delete image</button>
+                          <button type="button" class="btn btn-outline btn-sm" data-popular-image-reset="1">Reset default</button>
+                        </div>
+                        <small class="muted">Upload a file, choose a product image, or paste a path URL.</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="field span2">
+                    <label for="popularCategory2Title">Card 2 Title</label>
+                    <input type="text" id="popularCategory2Title" placeholder="Door Locks & Security">
+                  </div>
+                  <div class="field span2">
+                    <label for="popularCategory2Text">Card 2 Description</label>
+                    <input type="text" id="popularCategory2Text" placeholder="Quality door locks, lever sets and security hardware">
+                  </div>
+                  <div class="field span2">
+                    <label for="popularCategory2Link">Card 2 Link</label>
+                    <input type="text" id="popularCategory2Link" placeholder="door-locks-security.html">
+                  </div>
+                  <div class="field span2">
+                    <label for="popularCategory2Image">Card 2 Image</label>
+                    <div class="photo-row">
+                      <div class="photo-preview" id="popularCategory2Preview"><i class="fa-solid fa-image"></i></div>
+                      <div class="photo-uploader">
+                        <input type="file" id="popularCategory2Upload" accept="image/*" aria-label="Upload card 2 image" title="Upload card 2 image" placeholder="Upload card 2 image">
+                        <select id="popularCategory2ImageSelect" aria-label="Use existing product image for card 2" title="Use existing product image for card 2">
+                          <option value="">Use existing product image...</option>
+                        </select>
+                        <input type="text" id="popularCategory2Image" placeholder="products/your-image.avif" aria-label="Card 2 image path" title="Card 2 image path">
+                        <div class="card-action-row">
+                          <button type="button" class="btn btn-primary btn-sm" data-popular-card-save="2">Save card</button>
+                          <button type="button" class="btn btn-primary btn-sm" data-popular-image-update="2">Update image</button>
+                          <button type="button" class="btn btn-outline btn-sm" data-popular-image-clear="2">Delete image</button>
+                          <button type="button" class="btn btn-outline btn-sm" data-popular-image-reset="2">Reset default</button>
+                        </div>
+                        <small class="muted">Upload a file, choose a product image, or paste a path URL.</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="field span2">
+                    <label for="popularCategory3Title">Card 3 Title</label>
+                    <input type="text" id="popularCategory3Title" placeholder="Building Materials Nairobi">
+                  </div>
+                  <div class="field span2">
+                    <label for="popularCategory3Text">Card 3 Description</label>
+                    <input type="text" id="popularCategory3Text" placeholder="Adhesives, finishes and site essentials">
+                  </div>
+                  <div class="field span2">
+                    <label for="popularCategory3Link">Card 3 Link</label>
+                    <input type="text" id="popularCategory3Link" placeholder="building-materials.html">
+                  </div>
+                  <div class="field span2">
+                    <label for="popularCategory3Image">Card 3 Image</label>
+                    <div class="photo-row">
+                      <div class="photo-preview" id="popularCategory3Preview"><i class="fa-solid fa-image"></i></div>
+                      <div class="photo-uploader">
+                        <input type="file" id="popularCategory3Upload" accept="image/*" aria-label="Upload card 3 image" title="Upload card 3 image" placeholder="Upload card 3 image">
+                        <select id="popularCategory3ImageSelect" aria-label="Use existing product image for card 3" title="Use existing product image for card 3">
+                          <option value="">Use existing product image...</option>
+                        </select>
+                        <input type="text" id="popularCategory3Image" placeholder="products/your-image.avif" aria-label="Card 3 image path" title="Card 3 image path">
+                        <div class="card-action-row">
+                          <button type="button" class="btn btn-primary btn-sm" data-popular-card-save="3">Save card</button>
+                          <button type="button" class="btn btn-primary btn-sm" data-popular-image-update="3">Update image</button>
+                          <button type="button" class="btn btn-outline btn-sm" data-popular-image-clear="3">Delete image</button>
+                          <button type="button" class="btn btn-outline btn-sm" data-popular-image-reset="3">Reset default</button>
+                        </div>
+                        <small class="muted">Upload a file, choose a product image, or paste a path URL.</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="field span2">
+                    <label for="popularCategory4Title">Card 4 Title</label>
+                    <input type="text" id="popularCategory4Title" placeholder="Paints & Finishes">
+                  </div>
+                  <div class="field span2">
+                    <label for="popularCategory4Text">Card 4 Description</label>
+                    <input type="text" id="popularCategory4Text" placeholder="Interior and exterior paints, finishes and coatings">
+                  </div>
+                  <div class="field span2">
+                    <label for="popularCategory4Link">Card 4 Link</label>
+                    <input type="text" id="popularCategory4Link" placeholder="paints-and-finishes.html">
+                  </div>
+                  <div class="field span2">
+                    <label for="popularCategory4Image">Card 4 Image</label>
+                    <div class="photo-row">
+                      <div class="photo-preview" id="popularCategory4Preview"><i class="fa-solid fa-image"></i></div>
+                      <div class="photo-uploader">
+                        <input type="file" id="popularCategory4Upload" accept="image/*" aria-label="Upload card 4 image" title="Upload card 4 image" placeholder="Upload card 4 image">
+                        <select id="popularCategory4ImageSelect" aria-label="Use existing product image for card 4" title="Use existing product image for card 4">
+                          <option value="">Use existing product image...</option>
+                        </select>
+                        <input type="text" id="popularCategory4Image" placeholder="products/your-image.avif" aria-label="Card 4 image path" title="Card 4 image path">
+                        <div class="card-action-row">
+                          <button type="button" class="btn btn-primary btn-sm" data-popular-card-save="4">Save card</button>
+                          <button type="button" class="btn btn-primary btn-sm" data-popular-image-update="4">Update image</button>
+                          <button type="button" class="btn btn-outline btn-sm" data-popular-image-clear="4">Delete image</button>
+                          <button type="button" class="btn btn-outline btn-sm" data-popular-image-reset="4">Reset default</button>
+                        </div>
+                        <small class="muted">Upload a file, choose a product image, or paste a path URL.</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="field span2">
+                    <label for="popularCategory5Title">Card 5 Title</label>
+                    <input type="text" id="popularCategory5Title" placeholder="Safety Gear Nairobi">
+                  </div>
+                  <div class="field span2">
+                    <label for="popularCategory5Text">Card 5 Description</label>
+                    <input type="text" id="popularCategory5Text" placeholder="Protective gear and essential site safety items">
+                  </div>
+                  <div class="field span2">
+                    <label for="popularCategory5Link">Card 5 Link</label>
+                    <input type="text" id="popularCategory5Link" placeholder="safety-gear.html">
+                  </div>
+                  <div class="field span2">
+                    <label for="popularCategory5Image">Card 5 Image</label>
+                    <div class="photo-row">
+                      <div class="photo-preview" id="popularCategory5Preview"><i class="fa-solid fa-image"></i></div>
+                      <div class="photo-uploader">
+                        <input type="file" id="popularCategory5Upload" accept="image/*" aria-label="Upload card 5 image" title="Upload card 5 image" placeholder="Upload card 5 image">
+                        <select id="popularCategory5ImageSelect" aria-label="Use existing product image for card 5" title="Use existing product image for card 5">
+                          <option value="">Use existing product image...</option>
+                        </select>
+                        <input type="text" id="popularCategory5Image" placeholder="products/your-image.avif" aria-label="Card 5 image path" title="Card 5 image path">
+                        <div class="card-action-row">
+                          <button type="button" class="btn btn-primary btn-sm" data-popular-card-save="5">Save card</button>
+                          <button type="button" class="btn btn-primary btn-sm" data-popular-image-update="5">Update image</button>
+                          <button type="button" class="btn btn-outline btn-sm" data-popular-image-clear="5">Delete image</button>
+                          <button type="button" class="btn btn-outline btn-sm" data-popular-image-reset="5">Reset default</button>
+                        </div>
+                        <small class="muted">Upload a file, choose a product image, or paste a path URL.</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-actions">
+                  <button type="submit" class="btn btn-primary" id="savePopularCategoriesBtn"><i class="fa-solid fa-check"></i> Update Popular Categories</button>
+                  <p class="msg" id="popularCategoriesMsg"></p>
+                </div>
+              </form>
+            </div>
+
+            <div class="panel">
+              <h3 id="formTitle">Add Product</h3>
+              <form id="productForm" novalidate>
+                <input type="hidden" id="pId">
+                <div class="form-grid">
+                  <div class="field" id="fPName">
+                    <label for="pName">Product Name <span class="req">*</span></label>
+                    <input type="text" id="pName" required placeholder="e.g. Total P20S Cordless Drill">
+                    <small class="error-text">Product name is required.</small>
+                  </div>
+
+                  <div class="field" id="fPSlug">
+                    <label for="pSlug">Slug <span class="req">*</span></label>
+                    <input type="text" id="pSlug" required placeholder="e.g. total-p20s-cordless-drill">
+                    <small class="error-text">Slug is required (letters, numbers and hyphens).</small>
+                  </div>
+
+                  <div class="field" id="fPBrandDisplay">
+                    <label for="pBrandDisplay">Brand Display <span class="req">*</span></label>
+                    <input type="text" id="pBrandDisplay" required placeholder="e.g. TOTAL">
+                    <small class="error-text">Brand display is required.</small>
+                  </div>
+
+                  <div class="field" id="fPBrandKey">
+                    <label for="pBrandKey">Brand Key <span class="req">*</span></label>
+                    <input type="text" id="pBrandKey" required placeholder="e.g. total">
+                    <small class="error-text">Brand key is required.</small>
+                  </div>
+
+                  <div class="field" id="fPCategory">
+                    <label for="pCategory">Category <span class="req">*</span></label>
+                    <select id="pCategory" required>
+                      <option value="">Select category</option>
+                      <option>Power Tools</option><option>Hand Tools</option><option>Plumbing Supplies</option>
+                      <option>Electrical Materials</option><option>Paint Supplies</option><option>Building Materials</option>
+                      <option>Cordless Tools</option><option>Air Pressure Tools & Compressors</option><option>Cleaning Tools</option>
+                      <option>Measuring & Detection Tools</option><option>Welding Equipment</option><option>Ladders</option>
+                      <option>Bathroom Accessories</option><option>Kitchen Accessories</option><option>Cabinet Fittings</option>
+                      <option>Door Locks & Security</option><option>Curtain Fittings</option><option>Safety Gear</option>
+                      <option>Fasteners</option><option>Water Systems</option><option value="__other__">Other (type below)</option>
+                    </select>
+                    <small class="error-text">Category is required.</small>
+                    <input type="text" id="pCategoryOther" class="hidden mt8" placeholder="Type custom category">
+                  </div>
+
+                  <div class="field">
+                    <label for="pModelType">Model / Type</label>
+                    <input type="text" id="pModelType" placeholder="e.g. Cordless Drill">
+                  </div>
+
+                  <div class="field" id="fPPrice">
+                    <label for="pPrice">Price (KES)</label>
+                    <input type="number" id="pPrice" min="0" step="1" value="0">
+                    <small class="error-text">Price cannot be negative.</small>
+                  </div>
+
+                  <div class="field">
+                    <label for="pAvailability">Availability</label>
+                    <select id="pAvailability"><option>In Stock</option><option>Low Stock</option><option>Pre-Order</option></select>
+                  </div>
+
+                  <div class="field">
+                    <label for="pColors">Colors (optional)</label>
+                    <input type="text" id="pColors" placeholder="e.g. Black, White, Silver">
+                    <small class="muted">Separate choices with commas. Leave empty to hide this option.</small>
+                  </div>
+
+                  <div class="field">
+                    <label for="pSizes">Sizes (optional)</label>
+                    <input type="text" id="pSizes" placeholder="e.g. Small, Medium, Large">
+                    <small class="muted">Separate choices with commas. Leave empty to hide this option.</small>
+                  </div>
+
+                  <div class="field span2">
+                    <label for="pSizePrices">Size prices (optional)</label>
+                    <input type="text" id="pSizePrices" placeholder="e.g. Small:1000, Medium:1500, Large:2000">
+                    <small class="muted">Use size:price pairs separated by commas, e.g. Small:1000, Medium:1500. KES/KSH prefixes are optional.</small>
+                  </div>
+
+                  <div class="field product-feature-row span2">
+                    <label for="pTopProduct">Top-selling product</label>
+                    <label class="check-control"><input type="checkbox" id="pTopProduct"> Show this product in Top Products</label>
+                  </div>
+
+                  <div class="field span2">
+                    <label for="pDescription">Description</label>
+                    <textarea id="pDescription" rows="3" placeholder="Short description shown on the product card"></textarea>
+                  </div>
+
+                  <div class="span2">
+                    <label for="pPhoto">Product Photo</label>
+                    <div class="photo-row">
+                      <div class="photo-preview" id="photoPreview"><i class="fa-solid fa-image"></i></div>
+                      <div class="photo-uploader">
+                        <input type="file" id="pPhoto" accept="image/*">
+                        <p class="muted photo-note">JPG or PNG. Uploading a new photo replaces the existing one.</p>
+                        <div class="upload-status" id="uploadStatus"><i class="fa-solid fa-spinner fa-spin"></i><span id="uploadStatusText">Preparing image...</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-actions">
+                  <button type="submit" class="btn btn-primary" id="saveBtn"><i class="fa-solid fa-check"></i> Save Product</button>
+                  <button type="button" class="btn btn-outline hidden" id="cancelEditBtn">Cancel Edit</button>
+                  <p class="msg" id="formMsg"></p>
+                </div>
+              </form>
+            </div>
+
+            <div class="table-tools">
+              <input type="text" id="prodSearch" placeholder="Search products...">
+              <select id="prodFilterAvailability" aria-label="Filter products by availability">
+                <option value="">All statuses</option>
+                <option value="In Stock">In Stock</option>
+                <option value="Low Stock">Low Stock</option>
+                <option value="Pre-Order">Pre-Order</option>
+              </select>
+              <select id="prodSort" aria-label="Sort products">
+                <option value="created_desc">Newest first</option>
+                <option value="name_asc">Name A-Z</option>
+                <option value="price_desc">Price High-Low</option>
+                <option value="price_asc">Price Low-High</option>
+              </select>
+              <div class="actions">
+                <button type="button" class="btn btn-outline btn-sm" id="importIndexBtn"><i class="fa-solid fa-file-import"></i> Import Index</button>
+                <input type="file" id="indexImportFile" accept=".html,text/html" class="hidden" aria-label="Choose index HTML file to import">
+                <span id="importStatus" class="import-status">Idle</span>
+                <span class="count-pill" id="prodCount">0 products</span>
+              </div>
+            </div>
+
+            <div class="table-wrap">
+              <table class="prod-table" id="prodTable">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th class="sortable" data-col="name">Name <i class="fa-solid fa-sort"></i></th>
+                    <th>Category</th>
+                    <th class="sortable" data-col="price">Price <i class="fa-solid fa-sort"></i></th>
+                    <th>Status</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="prodTableBody"></tbody>
+              </table>
+            </div>
+            <div class="pagination">
+              <div class="left" id="prodPageInfo">Page 1</div>
+              <div class="right">
+                <button type="button" class="btn btn-outline btn-sm" id="prodPrevBtn">Prev</button>
+                <button type="button" class="btn btn-outline btn-sm" id="prodNextBtn">Next</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- OFFERS TAB -->
+          <div class="tab-panel" id="tab-offers">
+            <div class="panel">
+              <h3 id="offerFormTitle">Add Offer / Deal</h3>
+              <p class="muted offers-help">
+                These deals will appear on the website automatically when active.
+              </p>
+              <form id="offerForm" novalidate>
+                <input type="hidden" id="oId">
+                <div class="form-grid">
+                  <div class="field" id="fOTitle">
+                    <label for="oTitle">Offer Title <span class="req">*</span></label>
+                    <input type="text" id="oTitle" required placeholder="e.g. Union Lever Lockset (Satin Nickel)">
+                    <small class="error-text">Offer title is required.</small>
+                  </div>
+
+                  <div class="field" id="fOPriceText">
+                    <label for="oPriceText">Price Text</label>
+                    <input type="text" id="oPriceText" placeholder="e.g. 3,000 or Ask for price">
+                    <small class="error-text">Invalid price text.</small>
+                  </div>
+
+                  <div class="field">
+                    <label for="oPriceNumber">Price Number (optional)</label>
+                    <input type="number" id="oPriceNumber" min="0" step="1" placeholder="e.g. 3000">
+                  </div>
+
+                  <div class="field">
+                    <label for="oSortOrder">Sort Order</label>
+                    <input type="number" id="oSortOrder" min="0" step="1" value="0">
+                  </div>
+
+                  <div class="field span2">
+                    <label for="oWhatsappText">WhatsApp Message (optional)</label>
+                    <textarea id="oWhatsappText" rows="2" placeholder="Hi Frontline Hardware, I want to order: Union Lever Lockset (Satin Nickel)"></textarea>
+                  </div>
+
+                  <div class="span2">
+                    <label for="oPhoto">Offer Image</label>
+                    <div class="photo-row">
+                      <div class="photo-preview" id="offerPhotoPreview"><i class="fa-solid fa-image"></i></div>
+                      <div class="photo-uploader">
+                        <input type="file" id="oPhoto" accept="image/*">
+                        <p class="muted photo-note">JPG, PNG, or WebP. Uploading a new image replaces the old one.</p>
+                        <div class="upload-status" id="offerUploadStatus"><i class="fa-solid fa-spinner fa-spin"></i><span id="offerUploadStatusText">Preparing image...</span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="field offer-active-row">
+                    <input type="checkbox" id="oIsActive" checked>
+                    <label for="oIsActive">Active on website</label>
+                  </div>
+                </div>
+
+                <div class="form-actions">
+                  <button type="submit" class="btn btn-primary" id="saveOfferBtn"><i class="fa-solid fa-check"></i> Save Offer</button>
+                  <button type="button" class="btn btn-outline hidden" id="cancelOfferEditBtn">Cancel Edit</button>
+                  <p class="msg" id="offerFormMsg"></p>
+                </div>
+              </form>
+            </div>
+
+            <div class="table-tools">
+              <input type="text" id="offersSearch" placeholder="Search offers...">
+              <select id="offersFilterActive" aria-label="Filter offers by status">
+                <option value="">All statuses</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+              <select id="offersSort" aria-label="Sort offers">
+                <option value="sort_asc">Sort order</option>
+                <option value="title_asc">Title A-Z</option>
+                <option value="created_desc">Newest first</option>
+              </select>
+              <div class="actions">
+                <span class="count-pill" id="offersCount">0 offers</span>
+              </div>
+            </div>
+
+            <div class="table-wrap">
+              <table class="prod-table" id="offersTable">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>Sort</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="offersTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- LEADS TAB -->
+          <div class="tab-panel" id="tab-leads">
+            <div class="table-tools">
+              <input type="text" id="leadsSearch" placeholder="Search enquiries...">
+              <select id="leadsFilterSource" aria-label="Filter enquiries by source">
+                <option value="">All sources</option>
+                <option value="Contact Form">Contact Form</option>
+                <option value="Newsletter">Newsletter</option>
+              </select>
+              <select id="leadsSort" aria-label="Sort enquiries">
+                <option value="date_desc">Newest first</option>
+                <option value="date_asc">Oldest first</option>
+                <option value="name_asc">Name A-Z</option>
+              </select>
+              <div class="actions">
+                <button type="button" class="btn btn-outline btn-sm" id="refreshLeadsBtn"><i class="fa-solid fa-rotate"></i> Refresh</button>
+                <button type="button" class="btn btn-outline btn-sm" id="exportLeadsBtn"><i class="fa-solid fa-download"></i> CSV</button>
+                <button type="button" class="btn btn-danger btn-sm" id="deleteFilteredLeadsBtn"><i class="fa-solid fa-trash"></i> Delete Filtered</button>
+              </div>
+            </div>
+
+            <div class="table-wrap">
+              <table class="prod-table" id="leadsTable">
+                <thead>
+                  <tr>
+                    <th>Date</th><th>Source</th><th>Name</th><th>Phone</th><th>Email</th><th>Message</th><th></th>
+                  </tr>
+                </thead>
+                <tbody id="leadsTableBody"></tbody>
+              </table>
+            </div>
+            <div class="pagination">
+              <div class="left" id="leadsPageInfo">Page 1</div>
+              <div class="right">
+                <button type="button" class="btn btn-outline btn-sm" id="leadsPrevBtn">Prev</button>
+                <button type="button" class="btn btn-outline btn-sm" id="leadsNextBtn">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="profile-card">
+          <div class="head">
+            <div class="avatar" id="profileAvatar">A</div>
+            <div>
+              <h3 id="profileEmail">staff@frontline.co.ke</h3>
+              <p id="profileRole">Role: staff</p>
+            </div>
+          </div>
+          <div class="profile-meta">
+            <div><span>Last login</span><strong id="lastLogin">Not available</strong></div>
+            <div><span>Session</span><strong id="sessionExpiry">Not available</strong></div>
+            <div><span>Notifications</span><strong id="notifCount">3</strong></div>
+          </div>
+          <div class="quick-settings">
+            <div class="switch-row"><span id="quickThemeLabel">Dark mode</span><input type="checkbox" id="quickTheme" aria-labelledby="quickThemeLabel"></div>
+            <div class="switch-row"><span id="quickAlertsLabel">Email alerts</span><input type="checkbox" id="quickAlerts" checked aria-labelledby="quickAlertsLabel"></div>
+            <div class="switch-row"><span id="quick2faLabel">Two-step sign-in</span><input type="checkbox" id="quick2fa" aria-labelledby="quick2faLabel"></div>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </div>
+</div>
+
+<!-- confirm modal -->
+<div class="modal-backdrop" id="confirmModal">
+  <div class="modal-card">
+    <h4 id="confirmTitle">Confirm action</h4>
+    <p id="confirmText">Are you sure?</p>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-outline" id="confirmCancel">Cancel</button>
+      <button type="button" class="btn btn-danger" id="confirmOk">Delete</button>
+    </div>
+  </div>
+</div>
+
+<script src="admin_2.js"></script>
+</body>
+</html>

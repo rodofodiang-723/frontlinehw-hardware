@@ -1,0 +1,11 @@
+# Local Netlify folder
+.netlify
+
+# Local browser and Lighthouse cache data
+lighthouse-chrome-profile/
+lighthouse-temp/
+
+# Local backups and generated machine files
+*.zip
+__pycache__/
+.vscode/

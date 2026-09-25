@@ -1,0 +1,33 @@
+{
+  "supabase": {
+    "url": "https://bgnykjzxnknyvefytnjj.supabase.co",
+    "anonKey": "sb_publishable_VSzgwX0q4NsjFezuua_dCQ_Br1bE9EE"
+  },
+  "features": {
+    "loadLiveDeals": true,
+    "loadLiveProducts": true
+  },
+  "content": {
+    "heroBackgroundImage": "gallery-images/Fluted wall panel and marble sheet.jfif",
+    "easySellSection": {
+      "eyebrow": "Top Products",
+      "title": "Favourite-selling Products",
+      "description": "Hand-picked items that sell fast at the counter — good margins, reliable stock and easy to explain to customers. Tap any item to view details or message us on WhatsApp for bulk pricing."
+    },
+    "projectGallery": [
+      {
+        "title": "Project A",
+        "imageUrl": ""
+      },
+      {
+        "title": "Project B",
+        "imageUrl": ""
+      }
+    ],
+    "googleReviews": {
+      "_howTo": "Add the real Google Place ID and a browser-restricted Google Places API key here. Enable Places API (New), restrict the key to your deployed domains, and never use a server key in this public file.",
+      "placeId": "",
+      "apiKey": ""
+    }
+  }
+}
