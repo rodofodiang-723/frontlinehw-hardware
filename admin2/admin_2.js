@@ -588,10 +588,10 @@ function pickIndexHtmlFile(){
   });
 }
 
-async function readIndexHtmlForImport(){
+async function readIndexSourceForImport(){
   try{
-    setImportStatus('Reading index file...', '');
-    const response = await fetchWithTimeout('../index_24/index_24.html', { cache: 'no-store' }, 10000);
+    setImportStatus('Reading storefront products...', '');
+    const response = await fetchWithTimeout('../index_24/index_24.js', { cache: 'no-store' }, 10000);
     if(response.ok){
       return await response.text();
     }
@@ -599,7 +599,7 @@ async function readIndexHtmlForImport(){
     // Fall back to manual file picker when fetch is blocked on local file:// pages.
   }
 
-  showToast('err','Auto-read blocked by browser. Select index_24.html manually to continue import.');
+  showToast('err','Auto-read blocked by browser. Select index_24.js manually to continue import.');
   setImportStatus('Waiting for file selection...', '');
   return await pickIndexHtmlFile();
 }
@@ -616,7 +616,7 @@ async function importProductsFromIndex(){
   }
 
   const proceed = await confirmAction(
-    'Import products from index_24.html',
+    'Import products from index_24.js',
     'This will add new products and update existing ones by slug. Continue?',
     { okText:'Import', okTone:'primary' }
   );
@@ -629,17 +629,17 @@ async function importProductsFromIndex(){
   setImportStatus('Starting import...', '');
 
   try{
-    const html = await readIndexHtmlForImport();
+    const source = await readIndexSourceForImport();
     setImportStatus('Parsing products...', '');
     const productsLiteral =
-      extractArrayLiteral(html, 'let products =') ||
-      extractArrayLiteral(html, 'const products =');
+      extractArrayLiteral(source, 'let products =') ||
+      extractArrayLiteral(source, 'const products =');
     const cordlessLiteral =
-      extractArrayLiteral(html, 'let cordlessProducts =') ||
-      extractArrayLiteral(html, 'const cordlessProducts =');
+      extractArrayLiteral(source, 'let cordlessProducts =') ||
+      extractArrayLiteral(source, 'const cordlessProducts =');
 
     if(!productsLiteral){
-      throw new Error('Could not find products array in index_24.html.');
+      throw new Error('Could not find products array in index_24.js.');
     }
 
     const productsArray = Function('"use strict"; return (' + productsLiteral + ');')();
